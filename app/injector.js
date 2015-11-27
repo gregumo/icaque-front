@@ -1,14 +1,48 @@
 angular.module('PocApp', ['ngMaterial', 'ngRoute', 'restangular'])
     .config(['RestangularProvider', function(RestangularProvider) {
 
-        RestangularProvider.setBaseUrl('http://api.icaque.dev/app_dev.php/');
+        var baseRoute = '';
 
-        //Return only members list from getList operation
-        RestangularProvider.setResponseExtractor(function(response, operation) {
-            if (operation === 'getList') {
-                return response['hydra:member'];
+        RestangularProvider.setBaseUrl('http://api.icaque.dev/' + baseRoute );
+
+        // JSON-LD @id support
+        RestangularProvider.setRestangularFields({
+            id: '@id'
+        });
+        RestangularProvider.setSelfLinkAbsoluteUrl(false);
+
+        // Hydra collections support
+        RestangularProvider.addResponseInterceptor(function (data, operation) {
+            // Remove trailing slash to make Restangular working
+            function populateHref(data) {
+                if (data['@id']) {
+                    data.href = data['@id'].substring( baseRoute.length + 1);
+                }
             }
-            return response;
+
+            // Populate href property for the collection
+            populateHref(data);
+
+            if ('getList' === operation) {
+                var collectionResponse = data['hydra:member'];
+                collectionResponse.metadata = {};
+
+                // Put metadata in a property of the collection
+                angular.forEach(data, function (value, key) {
+                    if ('hydra:member' !== key) {
+                        collectionResponse.metadata[key] = value;
+                    }
+                });
+
+                // Populate href property for all elements of the collection
+                angular.forEach(collectionResponse, function (value) {
+                    populateHref(value);
+                });
+
+                return collectionResponse;
+            }
+
+            return data;
         });
 
         //Remove payLoad from DELETE requests
@@ -19,4 +53,5 @@ angular.module('PocApp', ['ngMaterial', 'ngRoute', 'restangular'])
             return elem;
         });
 
-}]);
+    }])
+;
