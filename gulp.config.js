@@ -1,8 +1,8 @@
 module.exports = function() {
     var config = {
         copyFile: [
-            'app/**/*',
-            '!app/**/*.scss',
+            'src/**/*',
+            '!src/**/*.scss',
             '!bower_components/**/*'
         ]
     };
