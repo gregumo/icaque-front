@@ -1,7 +1,7 @@
 angular.module('PocApp', ['ngMaterial', 'ngRoute', 'restangular'])
     .config(['RestangularProvider', function(RestangularProvider) {
 
-        RestangularProvider.setBaseUrl('http://api.poc.dev');
+        RestangularProvider.setBaseUrl('http://api.icaque.dev');
 
         //Return only members list from getList operation
         RestangularProvider.setResponseExtractor(function(response, operation) {
