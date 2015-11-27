@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "make-dev": "gulp bower && gulp copy",
-    "start-dev": "gulp watch",
+    "start-dev": "gulp watch"
   },
   "repository": {
     "type": "git",
