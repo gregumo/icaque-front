@@ -11,5 +11,10 @@
             templateUrl: 'modules/user/login/login.html',
             controller: 'LoginController'
         })
+        .state('user-manage', {
+            url: '/manage',
+            templateUrl: 'modules/user/manage/manage.html',
+            controller: 'ManageController'
+        })
     });
 }());
