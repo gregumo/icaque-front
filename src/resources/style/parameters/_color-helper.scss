@@ -1,0 +1,45 @@
+$colors: (
+    'orange': #f44336,
+    'white': #fff,
+) !default;
+
+// Responsive breakpoints
+$color-helper--breakpoints: ('xs': 0, 'sm': 768px, 'md': 992px, 'lg': 1200px) !default;
+$color-helper--enable--breakpoints: false !default;
+
+// States helpers
+$color-helper--enable--state-hover: false !default;
+$color-helper--selector__suffix--state-hover: '-hover' !default;
+$color-helper--selector__append--state-hover: '&:hover' !default;
+
+$color-helper--enable--state-active: false !default;
+$color-helper--selector__suffix--state-active: '-active' !default;
+$color-helper--selector__append--state-active: '&:active' !default;
+
+$color-helper--enable--state-focus: false !default;
+$color-helper--selector__suffix--state-focus: '-focus' !default;
+$color-helper--selector__append--state-focus: '&:focus' !default;
+
+$color-helper--enable--state-visited: false !default;
+$color-helper--selector__suffix--state-visited: '-visited' !default;
+$color-helper--selector__append--state-visited: '&:visited' !default;
+
+// Background-color
+$color-helper--enable--background-color: true !default;
+$color-helper--selector--background-color: 'bg-color-' !default;
+
+// Text color
+$color-helper--enable--text-color: true !default;
+$color-helper--selector--text-color: 'color-' !default;
+
+// Border color
+$color-helper--enable--border-color: true !default;
+$color-helper--selector--border-color: 'border-color-' !default;
+
+// fill | svg
+$color-helper--enable--fill-color: false !default;
+$color-helper--selector--fill-color: 'fill-' !default;
+
+// stroke | svg
+$color-helper--enable--stroke-color: false !default;
+$color-helper--selector--stroke-color: 'stroke-' !default;

@@ -1,4 +1,4 @@
-angular.module('PocApp')
+angular.module('IcaqueApp')
     .controller('PeopleCtrl', ['$scope', 'Restangular', function($scope, Restangular) {
 
         var peopleApi = Restangular.all('people');
