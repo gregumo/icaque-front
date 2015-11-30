@@ -1,0 +1,15 @@
+(function () {
+    'use strict';
+    angular.module('user', []).config(function ($stateProvider) {
+        $stateProvider.state('user-register', {
+            url: '/register',
+            templateUrl: 'modules/user/register/register.html',
+            controller: 'RegisterController'
+        })
+        .state('user-login', {
+            url: '/login',
+            templateUrl: 'modules/user/login/login.html',
+            controller: 'LoginController'
+        })
+    });
+}());
