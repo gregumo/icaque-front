@@ -1,12 +1,9 @@
 var gulp = require('gulp');
 var config = require('./gulp.config')();
-var autoprefixer = require('gulp-autoprefixer');
-var csso = require('gulp-csso');
-var sass = require('gulp-sass');
-var bower = require('gulp-bower');
+var $ = require('gulp-load-plugins')();
 
 gulp.task('bower', function() {
-  return bower()
+  return $.bower()
     .pipe(gulp.dest('web/bower_components'))
 });
 
