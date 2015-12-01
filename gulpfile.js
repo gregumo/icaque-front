@@ -110,7 +110,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(config.html.watch, ['copy', reload]);
   gulp.watch(config.sass.watch, ['styles', reload]);
-  gulp.watch(config.js.watch, reload);
+  gulp.watch(config.js.watch, ['copy', reload]);
   gulp.watch(config.images.watch, ['copy', reload]);
   gulp.watch(config.fonts.watch, ['copy', reload]);
 });
