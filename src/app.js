@@ -5,57 +5,54 @@ angular.module('IcaqueApp', [
     'ui.router',
     'user'
 ]).config(['RestangularProvider', function (RestangularProvider) {
+    var baseRoute = 'app_dev.php/';
+    RestangularProvider.setBaseUrl('http://api.icaque.dev/' + baseRoute);
 
-        var baseRoute = 'app_dev.php/';
+    // JSON-LD @id support
+    RestangularProvider.setRestangularFields({
+        id: '@id'
+    });
+    RestangularProvider.setSelfLinkAbsoluteUrl(false);
 
-        RestangularProvider.setBaseUrl('http://api.icaque.dev/' + baseRoute);
+    // Hydra collections support
+    RestangularProvider.addResponseInterceptor(function (data, operation) {
+        // Remove trailing slash to make Restangular working
+        function populateHref(data) {
+            if (data['@id']) {
+                data.href = data['@id'].substring(baseRoute.length + 1);
+            }
+        }
 
-        // JSON-LD @id support
-        RestangularProvider.setRestangularFields({
-            id: '@id'
-        });
-        RestangularProvider.setSelfLinkAbsoluteUrl(false);
+        // Populate href property for the collection
+        populateHref(data);
 
-        // Hydra collections support
-        RestangularProvider.addResponseInterceptor(function (data, operation) {
-            // Remove trailing slash to make Restangular working
-            function populateHref(data) {
-                if (data['@id']) {
-                    data.href = data['@id'].substring(baseRoute.length + 1);
+        if ('getList' === operation) {
+            var collectionResponse = data['hydra:member'];
+            collectionResponse.metadata = {};
+
+            // Put metadata in a property of the collection
+            angular.forEach(data, function (value, key) {
+                if ('hydra:member' !== key) {
+                    collectionResponse.metadata[key] = value;
                 }
-            }
+            });
 
-            // Populate href property for the collection
-            populateHref(data);
+            // Populate href property for all elements of the collection
+            angular.forEach(collectionResponse, function (value) {
+                populateHref(value);
+            });
 
-            if ('getList' === operation) {
-                var collectionResponse = data['hydra:member'];
-                collectionResponse.metadata = {};
+            return collectionResponse;
+        }
 
-                // Put metadata in a property of the collection
-                angular.forEach(data, function (value, key) {
-                    if ('hydra:member' !== key) {
-                        collectionResponse.metadata[key] = value;
-                    }
-                });
+        return data;
+    });
 
-                // Populate href property for all elements of the collection
-                angular.forEach(collectionResponse, function (value) {
-                    populateHref(value);
-                });
-
-                return collectionResponse;
-            }
-
-            return data;
-        });
-
-        //Remove payLoad from DELETE requests
-        RestangularProvider.setRequestInterceptor(function (elem, operation) {
-            if (operation === "remove") {
-                return null;
-            }
-            return elem;
-        });
-
-    }]);
+    //Remove payLoad from DELETE requests
+    RestangularProvider.setRequestInterceptor(function (elem, operation) {
+        if (operation === "remove") {
+            return null;
+        }
+        return elem;
+    });
+}]);
