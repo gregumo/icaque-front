@@ -6,11 +6,18 @@
         <link rel="stylesheet" href="/style.css">
     </head>
 
-    <body ng-app="IcaqueApp">
+    <body ng-app="IcaqueApp" ng-controller="AppController">
+        <header class="md-whiteframe-3dp" id="header" ng-include="'resources/template/layout/header.html'"></header>
 
-        <header ng-include="'resources/template/layout/header.html'"></header>
+        <main layout="row" layout-align="start stretch" id="content">
+            <section layout="row" flex>
+                <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-include="'resources/template/layout/nav.html'"></md-sidenav>
 
-        <main id="content" ui-view></main>
+                <md-content flex layout-padding>
+                    <div ui-view></div>
+                </md-content>
+            </section>
+        </main>
 
 
         <!-- External components -->
