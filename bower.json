@@ -21,7 +21,6 @@
     "restangular": "master",
     "angular-route": "master",
     "angular-ui-router": "~0.2.15",
-    "bootstrap-sass": "~3.3.6",
     "color-helper": "*"
   },
   "resolutions": {
