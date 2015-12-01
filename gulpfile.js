@@ -22,32 +22,32 @@ var AUTOPREFIXER_BROWSERS = [
 // Install bower components on `/src` and `/web` folders
 gulp.task('bower', function() {
   return $.bower()
-    .pipe(gulp.dest('web/bower_components'))
+    .pipe(gulp.dest(config.bower.dest))
 });
 
 // Optimize images
 gulp.task('images', function () {
-  return gulp.src('src/resources/images/**/*')
+  return gulp.src(config.images.src)
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('web/resources/images'))
+    .pipe(gulp.dest(config.images.dest))
     .pipe($.size({title: 'images'}));
 });
 
 // Copy all files at the root level (app)
 gulp.task('copy', function () {
-  return gulp.src(config.copyFile, {
+  return gulp.src(config.copy.src, {
     dot: true
-}).pipe(gulp.dest('web'))
+}).pipe(gulp.dest(config.root.dest))
     .pipe($.size({title: 'copy'}));
 });
 
 // Copy web fonts to dist
 gulp.task('fonts', function () {
-  return gulp.src(['src/resources/fonts/**/*'])
-    .pipe(gulp.dest('web/resources/fonts'))
+  return gulp.src(config.fonts.src)
+    .pipe(gulp.dest(config.fonts.dest))
     .pipe($.size({title: 'fonts'}));
 });
 
@@ -66,7 +66,7 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.csso()))
-    .pipe(gulp.dest(config.sass.web))
+    .pipe(gulp.dest(config.sass.dest))
     .pipe($.size({title: 'styles'}));
 });
 
@@ -74,7 +74,7 @@ gulp.task('styles', function () {
 gulp.task('html', function () {
   var assets = $.useref({searchPath: '{.tmp,web}'});
 
-  return gulp.src('web/**/*.html')
+  return gulp.src(config.html.src)
     .pipe(assets)
     // Concatenate and minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
@@ -88,12 +88,12 @@ gulp.task('html', function () {
     // Minify any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output files
-    .pipe(gulp.dest('web'))
+    .pipe(gulp.dest(config.root.dest))
     .pipe($.size({title: 'html'}));
 });
 
 // Clean output directory
-gulp.task('clean', del.bind(null, ['.tmp', 'web/*'], {dot: true}));
+gulp.task('clean', del.bind(null, ['.tmp', config.root.dest], {dot: true}));
 
 // Watch files for changes & reload
 gulp.task('serve', ['styles'], function () {
@@ -105,14 +105,14 @@ gulp.task('serve', ['styles'], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['.tmp', 'web']
+    server: ['.tmp', config.root.dest]
   });
 
-  gulp.watch(['src/**/*.html'], ['copy', reload]);
-  gulp.watch(['src/resources/style/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['src/**/*.js'], reload);
-  gulp.watch(['src/resources/images/**/*'], ['copy', reload]);
-  gulp.watch(['src/resources/fonts/**/*'], ['copy', reload]);
+  gulp.watch(config.html.watch, ['copy', reload]);
+  gulp.watch(config.sass.watch, ['styles', reload]);
+  gulp.watch(config.js.watch, reload);
+  gulp.watch(config.images.watch, ['copy', reload]);
+  gulp.watch(config.fonts.watch, ['copy', reload]);
 });
 
 // Build production files, the default task
