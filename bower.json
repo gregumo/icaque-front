@@ -21,7 +21,8 @@
     "restangular": "master",
     "angular-route": "master",
     "angular-ui-router": "~0.2.15",
-    "color-helper": "*"
+    "color-helper": "*",
+    "angular-translate": "~2.8.1"
   },
   "resolutions": {
     "lodash": ">=1.3.0",

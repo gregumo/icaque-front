@@ -3,7 +3,8 @@ angular.module('IcaqueApp', [
     'ngRoute',
     'restangular',
     'ui.router',
-    'user'
+    'user',
+    'pascalprecht.translate'
 ]).config(['RestangularProvider', function (RestangularProvider) {
     var baseRoute = 'app_dev.php/';
     RestangularProvider.setBaseUrl('http://api.icaque.dev/' + baseRoute);
