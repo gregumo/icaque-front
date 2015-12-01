@@ -4,8 +4,8 @@
   "description": "icaque poc front side",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "make-dev": "gulp bower && gulp copy",
-    "start-dev": "gulp watch"
+    "make-dev": "npm install && gulp",
+    "start-dev": "gulp serve"
   },
   "repository": {
     "type": "git",
@@ -18,11 +18,25 @@
   },
   "homepage": "https://github.com/gregumo/icaque-front#readme",
   "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "del": "^2.1.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-bower": "0.0.11",
+    "gulp-cache": "^0.4.1",
+    "gulp-changed": "^1.3.0",
     "gulp-csso": "^1.0.1",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.1.0",
-    "gulp-sass": "^2.1.0"
+    "gulp-minify-html": "^1.0.4",
+    "gulp-sass": "^2.1.0",
+    "gulp-size": "^2.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-uncss": "^1.0.4",
+    "gulp-useref": "^3.0.3",
+    "run-sequence": "^1.1.5"
   }
 }
