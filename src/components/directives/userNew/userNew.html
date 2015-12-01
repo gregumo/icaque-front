@@ -1,0 +1,35 @@
+<md-content layout-padding>
+    <div layout="column">
+        <md-input-container>
+            <label translate="userNew.form.name.label"></label>
+            <input md-maxlength="30" required name="description" ng-model="user.name">
+        </md-input-container>
+    </div>
+
+    <div layout="column">
+        <md-input-container>
+            <label translate="userNew.form.description.label"></label>
+            <input md-maxlength="30" required name="description" ng-model="user.description">
+        </md-input-container>
+    </div>
+
+    <div layout="column">
+        <md-datepicker ng-model="user.birthDate" md-placeholder="Date de naissance"></md-datepicker>
+
+        <md-radio-group ng-model="user.gender">
+            <label translate="userNew.form.gender.label"></label>
+            <md-radio-button value="M" class="md-primary">
+                {{ 'userNew.form.gender.option.male'|translate }}
+            </md-radio-button>
+
+            <md-radio-button value="Femme">
+                {{ 'userNew.form.gender.option.female'|translate }}
+            </md-radio-button>
+        </md-radio-group>
+    </div>
+
+    <div layout="column">
+        <md-button class="md-raised" ng-click="user = null" translate="userNew.form.reset"></md-button>
+        <md-button class="md-raised md-primary" ng-click="save(user)" translate="userNew.form.submit"></md-button>
+    </div>
+</md-content>

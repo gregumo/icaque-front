@@ -21,5 +21,10 @@
             templateUrl: 'modules/user/list/list.html',
             controller: 'ListController'
         })
+        .state('user-new', {
+            url: '/utilisateurs/new',
+            templateUrl: 'modules/user/new/new.html',
+            controller: 'NewController'
+        })
     });
 }());

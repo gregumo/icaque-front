@@ -19,6 +19,16 @@
             'userDelete.dialog.cancel': 'Annuler',
             'userDelete.toast.success': 'Utilisateur Supprimé',
             'userDelete.toast.error': 'Utilisateur non supprimé, un problème est survenu',
+
+            'userNew.toast.success': 'Utilisateur enregistré',
+            'userNew.toast.error': 'l\'utilisateur n\'a pas pu enregistré',
+            'userNew.form.name.label': 'Nom',
+            'userNew.form.description.label': 'Description',
+            'userNew.form.gender.label': 'Genre',
+            'userNew.form.gender.option.male': 'Homme',
+            'userNew.form.gender.option.female': 'Femme',
+            'userNew.form.reset': 'Réinitialiser',
+            'userNew.form.submit': 'Valider',
         });
 
         $translateProvider.preferredLanguage('fr');
