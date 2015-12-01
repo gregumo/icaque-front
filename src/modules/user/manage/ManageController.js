@@ -2,7 +2,7 @@ angular.module('user').controller('ManageController', ['$scope', 'Restangular', 
 
         $scope.saving = true;
 
-        var peopleApi = Restangular.all('user');
+         var peopleApi = Restangular.all('admins');
 
         function loadPeople() {
             peopleApi.getList().then(function (people) {
