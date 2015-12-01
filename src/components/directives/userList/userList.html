@@ -1,5 +1,4 @@
 <md-list ng-init="updateList()">
-
     <div layout="row">
         <div flex>
             <h2 translate="userList.heading"></h2>
@@ -12,8 +11,6 @@
             </md-input-container>
         </div>
     </div>
-
-
 
     <md-list-item class="md-2-line" ng-repeat="user in users | filter:search">
         <img ng-src="{{ user.avatar }}" class="md-avatar" alt="{{ user.name }}" ng-if="user.avatar"/>
