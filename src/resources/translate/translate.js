@@ -9,6 +9,7 @@
             'userList.heading': 'Utilisateurs',
             'userList.action': 'Actions',
             'userList.action.edit': 'Éditer',
+            'userList.search.label': 'Rechercher dans la liste',
 
             'userDelete.action.delete': 'Supprimer',
             'userDelete.dialog.heading': 'Voulez-vous vraiment supprimer cet utilisateur ?',

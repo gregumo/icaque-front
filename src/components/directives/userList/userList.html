@@ -1,7 +1,21 @@
 <md-list ng-init="updateList()">
-    <md-subheader class="md-no-sticky" translate="userList.heading"></md-subheader>
 
-    <md-list-item class="md-2-line" ng-repeat="user in users">
+    <div layout="row">
+        <div flex>
+            <h2 translate="userList.heading"></h2>
+        </div>
+
+        <div flex>
+            <md-input-container class="md-block">
+                <label translate="userList.search.label"></label>
+                <input ng-model="search">
+            </md-input-container>
+        </div>
+    </div>
+
+
+
+    <md-list-item class="md-2-line" ng-repeat="user in users | filter:search">
         <img ng-src="{{ user.avatar }}" class="md-avatar" alt="{{ user.name }}" ng-if="user.avatar"/>
 
         <div class="md-list-item-text">
