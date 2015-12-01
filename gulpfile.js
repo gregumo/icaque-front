@@ -56,16 +56,12 @@ gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src(config.sass.src)
     .pipe($.sourcemaps.init())
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
     .pipe($.sass({
       precision: 10,
       onError: console.error.bind(console, 'Sass error:')
     }))
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
-    // Concatenate and minify styles
-    .pipe($.if('*.css', $.csso()))
     .pipe(gulp.dest(config.sass.dest))
     .pipe($.size({title: 'styles'}));
 });
@@ -110,7 +106,7 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(config.html.watch, ['copy', reload]);
   gulp.watch(config.sass.watch, ['styles', reload]);
-  gulp.watch(config.js.watch, reload);
+  gulp.watch(config.js.watch, ['copy', reload]);
   gulp.watch(config.images.watch, ['copy', reload]);
   gulp.watch(config.fonts.watch, ['copy', reload]);
 });
