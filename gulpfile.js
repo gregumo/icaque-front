@@ -18,16 +18,6 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-// install assets
-// gulp.task('make-dev', function() {
-//     runSequence(['bower', 'copy'], 'sass');
-// });
-//
-// // Start dev
-// gulp.task('start-dev', function() {
-//     gulp.watch(config.copyFile, ['copy']);
-//     gulp.watch(config.sass.watch, ['sass']);
-// })
 
 // Install bower components on `/src` and `/web` folders
 gulp.task('bower', function() {
