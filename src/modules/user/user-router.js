@@ -16,5 +16,10 @@
             templateUrl: 'modules/user/manage/manage.html',
             controller: 'ManageController'
         })
+        .state('user-list', {
+            url: '/utilisateurs/list',
+            templateUrl: 'modules/user/list/list.html',
+            controller: 'ListController'
+        })
     });
 }());

@@ -56,7 +56,7 @@ angular.module('IcaqueApp', [
         }
         return elem;
     });
-}]).controller('AppController', function($scope, $timeout, $mdSidenav, $log) {
+}]).controller('AppController', function($scope, $timeout, $mdSidenav, $log, $rootScope, Restangular) {
     $scope.toggleLeft = buildDelayedToggler('left');
 
     /**
@@ -106,4 +106,6 @@ angular.module('IcaqueApp', [
           $log.debug("close LEFT is done");
         });
     };
+
+    $rootScope.adminsApi = Restangular.all('admins');
 });
