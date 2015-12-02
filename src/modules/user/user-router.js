@@ -11,10 +11,20 @@
             templateUrl: 'modules/user/login/login.html',
             controller: 'LoginController'
         })
+        .state('user-logout', {
+            url: '/logout',
+            template: null,
+            controller: 'LogoutController'
+        })
         .state('user-manage', {
             url: '/manage',
             templateUrl: 'modules/user/manage/manage.html',
             controller: 'ManageController'
+        })
+        .state('user-reset-password', {
+            url: '/reset-password',
+            templateUrl: 'modules/user/login/reset-password.html',
+            controller: 'ResetPasswordController'
         })
         .state('user-list', {
             url: '/utilisateurs/list',
