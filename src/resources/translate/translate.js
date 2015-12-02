@@ -5,6 +5,7 @@
             'layout.nav.login': 'Se connecter',
             'layout.nav.register': 'S\'inscrire',
             'layout.nav.user': 'Utilisateurs',
+            'layout.nav.logout': 'Déconnexion',
 
             'userList.heading': 'Utilisateurs',
             'userList.action': 'Actions',
@@ -29,6 +30,8 @@
             'userNew.form.gender.option.female': 'Femme',
             'userNew.form.reset': 'Réinitialiser',
             'userNew.form.submit': 'Valider',
+
+            'user.logout.confirm': 'Vous avez bien été déconnecté'
         });
 
         $translateProvider.preferredLanguage('fr');

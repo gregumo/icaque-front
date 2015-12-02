@@ -1,13 +1,17 @@
 <md-list ng-cloak>
-    <md-list-item ui-sref="user-login">
+    <md-list-item ng-if="!isAuthenticated()" ui-sref="user-login">
         <p translate="layout.nav.login"></p>
     </md-list-item>
 
-    <md-list-item ui-sref="user-register">
+    <md-list-item ng-if="!isAuthenticated()" ui-sref="user-register">
         <p translate="layout.nav.register"></p>
     </md-list-item>
 
-    <md-list-item ui-sref="user-list">
+    <md-list-item ng-if="isAuthenticated()" ui-sref="user-list">
         <p translate="layout.nav.user"></p>
+    </md-list-item>
+
+    <md-list-item ng-if="isAuthenticated()" ui-sref="user-logout">
+        <p translate="layout.nav.logout"></p>
     </md-list-item>
 </md-list>
