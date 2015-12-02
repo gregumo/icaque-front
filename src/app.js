@@ -14,6 +14,8 @@ angular.module('IcaqueApp', [
 
         RestangularProvider.setBaseUrl('http://api.icaque.dev/' + baseRoute);
 
+        RestangularProvider.setFullResponse(true);
+
         // JSON-LD @id support
         RestangularProvider.setRestangularFields({
             id: '@id'
