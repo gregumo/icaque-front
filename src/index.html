@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
         <link rel="stylesheet" href="/style.css">
     </head>
 
@@ -19,7 +21,6 @@
             </section>
         </main>
 
-
         <!-- External components -->
         <script src="/bower_components/angular/angular.js"></script>
         <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -30,6 +31,7 @@
         <script src="/bower_components/angular-route/angular-route.js"></script>
         <script src="/bower_components/angular-translate/angular-translate.min.js"></script>
         <script src="/bower_components/lodash/lodash.js"></script>
+        <script src="/bower_components/satellizer/satellizer.js"></script>
 
         <script src="/app.js"></script>
         <script src="/resources/translate/translate.js"></script>
@@ -38,9 +40,13 @@
         <script src="/modules/user/user-router.js"></script>
         <script src="/modules/user/register/RegisterController.js"></script>
         <script src="/modules/user/login/LoginController.js"></script>
+        <script src="/modules/user/logout/LogoutController.js"></script>
         <script src="/modules/user/manage/ManageController.js"></script>
         <script src="/modules/user/list/ListController.js"></script>
         <script src="/modules/user/new/NewController.js"></script>
+
+        <!-- Components -->
+        <!--<script src="/components/factories/httpAuthInterceptor.js"></script>-->
 
         <!-- Directives -->
         <script src="/components/directives/userList/userListDirective.js"></script>
