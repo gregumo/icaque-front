@@ -5,8 +5,9 @@ angular.module('IcaqueApp', [
     'ui.router',
     'satellizer',
     'toastr',
+    'pascalprecht.translate',
     'user',
-    'pascalprecht.translate'
+    'basket'
 ])
     .config(['RestangularProvider', '$httpProvider', '$authProvider', function (RestangularProvider, $httpProvider, $authProvider) {
 
@@ -120,5 +121,9 @@ angular.module('IcaqueApp', [
                 });
         };
 
-        $rootScope.adminsApi = Restangular.all('admins');
+        $rootScope.usersApi = Restangular.all('users');
+        $rootScope.basketsApi = Restangular.all('baskets');
+        $rootScope.foodBasketsApi = Restangular.all('food_baskets');
+        $rootScope.fruitsApi = Restangular.all('fruits');
+        $rootScope.vegetablesApi = Restangular.all('vegetables');
     }]);
