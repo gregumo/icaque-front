@@ -5,7 +5,7 @@ angular.module('IcaqueApp').directive('userNew', function ($rootScope, $state, $
         templateUrl: 'components/directives/userNew/userNew.html',
         link: function(scope) {
             scope.save = function(user) {
-                $rootScope.adminsApi.post(user).then(function () {
+                $rootScope.usersApi.post(user).then(function () {
                     $state.go('user-list');
                     $mdToast.show(
                         $mdToast.simple()
