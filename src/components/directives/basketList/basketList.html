@@ -1,0 +1,42 @@
+<md-list>
+    <div layout="row">
+        <div flex>
+            <h2 translate="basketList.heading"></h2>
+        </div>
+
+        <div flex>
+            <md-input-container class="md-block">
+                <label translate="basketList.search.label"></label>
+                <input ng-model="search">
+            </md-input-container>
+        </div>
+    </div>
+
+    <md-list-item class="md-2-line" ng-repeat="basket in baskets | filter:search">
+        <div class="md-list-item-text">
+            <h3 ng-bind="basket.name"></h3>
+        </div>
+
+        <md-menu>
+            <md-button class="md-secondary" ng-click="$mdOpenMenu($event)" translate="basketList.action"></md-button>
+
+            <md-menu-content width="2" md-position-mode="target-right target">
+                <md-menu-item>
+                    <md-button ng-disabled="true" translate="basketList.action.edit"></md-button>
+                </md-menu-item>
+
+                <md-menu-item>
+                    <md-button basket-delete basket="basket" class="md-warn">
+                        {{ 'basketDelete.action.delete'|translate }}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+
+        <md-divider ng-if="!$last"></md-divider>
+    </md-list-item>
+
+    <md-button ui-sref="basket-new" class="md-fab md-primary / list_add-btn" aria-label="add">
+        <md-icon md-svg-src="resources/images/icon/plus--white.svg"></md-icon>
+    </md-button>
+</md-list>
