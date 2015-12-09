@@ -1,9 +1,8 @@
 'use strict';
 angular.module('user').controller('ListController', function ($mdDialog, $scope, $rootScope, Restangular) {
     $scope.updateList = function() {
-        $rootScope.adminsApi.getList().then(function(data) {
-            $scope.admins = data;
-            console.log($scope.admins);
+        $rootScope.usersApi.getList().then(function(response) {
+            $scope.admins = response.data;
         });
     };
 
