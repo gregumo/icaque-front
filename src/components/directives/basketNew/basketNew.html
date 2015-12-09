@@ -1,0 +1,75 @@
+<h2 class="text-center">{{ 'basket.compose.title'|translate }}</h2>
+<md-content layout-padding>
+    <form name="basketForm">
+        <div layout="column">
+            <md-input-container>
+                <label translate="basketNew.form.name.label"></label>
+                <input required name="name" ng-model="basket.name">
+            </md-input-container>
+        </div>
+
+        <div class="basketFoodRaws">
+            <div class="basketFoodRaw" layout="column" ng-repeat="foodBasket in basket.foodBaskets track by $index">
+                <div layout="row" layout-padding>
+
+                    <div flex="20">
+                        <md-input-container>
+                            <label>Type</label>
+                            <md-select ng-model="foodBasket.type">
+                                <md-option ng-repeat="foodType in foodTypes" value="{{foodType}}">
+                                    {{foodType}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div flex="50">
+                        <md-input-container ng-if="(foodBasket.type == foodTypes[0] )">
+                            <label>{{ 'basket.compose.select.fruit.label'|translate }}</label>
+                            <md-select ng-model="foodBasket.food">
+                                <md-option ng-repeat="fruit in fruits" value="{{fruit['@id']}}">
+                                    {{fruit.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container ng-if="(foodBasket.type == foodTypes[1] )">
+                            <label>{{ 'basket.compose.select.vegetable.label'|translate }}</label>
+                            <md-select ng-model="foodBasket.food">
+                                <md-option ng-repeat="vegetable in vegetables" value="{{vegetable['@id']}}">
+                                    {{vegetable.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div flex="20">
+                        <md-input-container ng-if="(foodBasket.type != null )">
+                            <label translate="basketNew.form.food.quantity.label"></label>
+                            <input required type="number" step="any" name="foodBasket.quantity" ng-model="foodBasket.quantity" min="1" max="500" />
+                            <div ng-messages="basketForm.foodBasket.quantity.$error" multiple>
+                                <div ng-message="min" ng-message="max">Entre 1 et 500</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div flex="10">
+                        <md-button ng-click="removeBasketFood(foodBasket)" class="md-fab md-mini md-danger" aria-label="add">
+                            <md-icon md-svg-src="resources/images/icon/minus--white.svg"></md-icon>
+                        </md-button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div layout="column">
+            <md-button ng-click="addBasketFood()" class="md-fab md-mini md-primary" aria-label="add">
+                <md-icon md-svg-src="resources/images/icon/plus--white.svg"></md-icon>
+            </md-button>
+        </div>
+
+        <div layout="column">
+            <md-button class="md-raised md-primary" ng-click="throwForm()" translate="basketNew.form.submit"></md-button>
+        </div>
+    </form>
+</md-content>
