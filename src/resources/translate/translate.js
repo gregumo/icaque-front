@@ -6,6 +6,7 @@
             'layout.nav.register': 'S\'inscrire',
             'layout.nav.user': 'Utilisateurs',
             'layout.nav.logout': 'Déconnexion',
+            'layout.nav.basket': 'Paniers',
 
             'userList.heading': 'Utilisateurs',
             'userList.action': 'Actions',
@@ -31,7 +32,25 @@
             'userNew.form.reset': 'Réinitialiser',
             'userNew.form.submit': 'Valider',
 
-            'user.logout.confirm': 'Vous avez bien été déconnecté'
+            'user.logout.confirm': 'Vous avez bien été déconnecté',
+
+            'basket.compose.title': 'Composer un panier',
+
+            'basketList.heading': 'Paniers',
+            'basketList.action': 'Actions',
+            'basketList.action.edit': 'Éditer',
+            'basketList.search.label': 'Rechercher dans la liste',
+
+            'basketDelete.action.delete': 'Supprimer',
+
+            'basketNew.form.name.label': 'Nom du panier',
+            'basketNew.form.food.quantity.label': 'Quantité',
+            'basketNew.form.submit': 'Enregistrer',
+
+            'fruit': 'Fruit',
+            'vegetable': 'Légume',
+            'basket.compose.select.fruit.label': 'Sélectionnez un fruit',
+            'basket.compose.select.vegetable.label': 'Sélectionnez un légume',
         });
 
         $translateProvider.preferredLanguage('fr');
